@@ -16,8 +16,19 @@
             width: 70px;
             text-align: center;
             padding: 4px;
+            padding-top: 50px;
             border-radius: 4px;
             float: right;
+        }
+
+        #bar2{
+            background-color: white;
+            width:800px; 
+            height: 400px; 
+            margin:auto;
+            margin-top:50px;
+            padding: 10px;
+            text-align: center;
         }
     </style>
 </head>
@@ -25,6 +36,13 @@
     <div id="bar">
         <div style="font-size: 40px;"> Mybook</div>
         <div id="signup_button" >Signup</div>       
+    </div>
+
+    <div id="bar2">
+    Log in to Mybook <br><br>
+    <input type="text" id="text"><br><br>
+    <input type="text" id="text"><br><br>
+    <input type="submit" id="button" value="Log In">
     </div>
 </body>
 </html>
