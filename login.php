@@ -8,14 +8,23 @@
         #bar{
             height:100px;
              background-color: rgb(59, 89, 152); 
-             color: #d9dfeb; 
-             font-size: 40px;
+             color: #d9dfeb;
+             padding: 4px;            
+        }
+        #signup_button{
+            background-color: #42b72a;
+            width: 70px;
+            text-align: center;
+            padding: 4px;
+            border-radius: 4px;
+            float: right;
         }
     </style>
 </head>
-<body>
+<body style="font-family: tahoma;  background-color: #e9ebee;">
     <div id="bar">
-        Mybook Signup
+        <div style="font-size: 40px;"> Mybook</div>
+        <div id="signup_button" >Signup</div>       
     </div>
 </body>
 </html>
