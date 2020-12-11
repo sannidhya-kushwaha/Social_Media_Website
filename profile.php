@@ -98,7 +98,8 @@
         <div style="width: 800px; margin:auto;font-size:30px">
         Mybook &nbsp; &nbsp;
     <input type="text" id="search_box" placeholder="Search for people"> 
-    <img src="images/selfie.jpg" alt="" style="width: 50px;float: right;">
+    <!-- <img src="images/selfie.jpg" alt="" style="width: 50px;float: right;"> -->
+    <img src="images/sannidhya.jpg" alt="" style="width: 50px;float: right;">
        
     </div>
         </div>
@@ -107,7 +108,8 @@
 <div style="width: 800px; margin: auto; min-height:400px;">
 <div style="background-color: white;text-align:center; color: #405d9b;">
     <img src="images/mountain.jpg" alt="" style="width: 100%;">
-    <img id="profile_pic" src="images/selfie.jpg" alt="">
+    <!-- <img id="profile_pic" src="images/selfie.jpg" alt=""> -->
+    <img id="profile_pic" src="images/sannidhya.jpg" alt="">
     <br>
     <div style="font-size: 20px;">Mary Jack</div>
     <br>
