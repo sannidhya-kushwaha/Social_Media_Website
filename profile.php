@@ -24,10 +24,16 @@
     }
     #profile_pic{
         width: 150px;
-        margin-top: -200px;
+        margin-top: -300px;
         border-radius: 50%;
         border:solid 2px white; 
     }
+    
+    #menu_buttons {
+            width: 100px;
+            display: inline-block;
+            margin: 2px;
+        }
     </style>
 </head>
 <body style="font-family: tahoma; background-color:#d0d8e4">
@@ -43,15 +49,25 @@
         </div>
 
 <!-- cover area -->
-<div style="width: 800px; margin: auto;background-color: black; min-height:400px;">
+<div style="width: 800px; margin: auto; min-height:400px;">
 <div style="background-color: white;text-align:center; color: #405d9b;">
     <img src="images/mountain.jpg" alt="" style="width: 100%;">
     <img id="profile_pic" src="images/selfie.jpg" alt="">
-    
     <br>
-    Timeline About Friends Photos Settings
+    <div style="font-size: 20px;">Mary Jack</div>
+    <br>
+
+    <div id="menu_buttons">Timeline</div>
+    <div id="menu_buttons">About</div>
+    <div id="menu_buttons">Friends</div>
+    <div id="menu_buttons">Photos</div>
+    <div id="menu_buttons">Settings</div>
 
 </div>
+    <div style="display:flex;">
+        <div style="min-height:400px; flex:1;"></div>
+        <div style="min-height: 400px;flex:2.5;"></div>
+    </div>
 
 </div>
 
