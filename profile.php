@@ -56,6 +56,25 @@
             color: #405d9b;
         }
 
+        textarea{
+            height: 60px;
+            width: 100%;
+            border: none;
+            font-family: tahoma;
+            font-size:14px;
+        }
+
+        #post_button{
+            float: right;
+            background-color: #405d9b;
+            border: none;
+            color: white;
+            padding: 4px;
+            font-size: 14px;
+            border-radius: 2px;
+            width: 50px;
+        }
+
     </style>
 </head>
 <body style="font-family: tahoma; background-color:#d0d8e4">
@@ -118,16 +137,17 @@
                 </div>
                 
                 
-
-
-
             </div>
 
         </div>
 
             <!-- Posts area -->
-        <div style="min-height: 400px;flex:2.5;">
-    
+        <div style="min-height: 400px;flex:2.5; padding: 20px;padding-right: 0px;">
+            <div style="border:solid thin #aaa; padding: 10px; background-color: white;">
+               <textarea placeholder="What's on your mind?"></textarea>
+               <input id="post_button" type="submit" value="Post">
+                <br>
+            </div>
         </div>
 
 
