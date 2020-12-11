@@ -1,27 +1,46 @@
 <?php
 
-$host = "localhost";
-$username = "root";
-$password = "mysql";
-$db = "mybook_db";
+class Database{
+
+    private $host = "localhost";
+    private $username = "root";
+    private $password = "mysql";
+    private $db = "mybook_db";
 
 
-$connection = mysqli_connect($host, $username,$password, $db);
+    function connect(){
 
+        $connection = mysqli_connect($this->host, $this->username,$this->password, $this->db);
+       return $connection;
+    }
 
+    function read($query){
+       $conn = $this->connect();
+       $result = mysqli_query($conn,$query);
 
+       if(!$result){
+           return false;
+       }else{
+           
+        $data = false;
+        while($row = mysqli_fetch_assoc($result)){
+            $data[] = $row;
+          }
+          return $data;
+       }
+    }
 
-$query = "select * from users";
+    function save($query){
+        $conn = $this->connect();
+        $result = mysqli_query($conn,$query);
 
-// $query = "insert into users (first_name, last_name) values ('$first_name', '$last_name')";
+        if(!$result){
+            return false;
+        }else{
+            return true;
+        }
+    }
 
-
-
-
-while($row = mysqli_fetch_assoc($result)){
-    $result = mysqli_query($connection,$query);
-    print_r($row);
 }
 
-// echo mysqli_error($connection);
-
+$DB = new Database();
