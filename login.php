@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mybook</title>
+    <title>Mybook | Log in</title>
     <style>
         #bar{
             height:100px;
@@ -16,7 +16,7 @@
             width: 70px;
             text-align: center;
             padding: 4px;
-            padding-top: 50px;
+            padding-top: 5px;
             border-radius: 4px;
             float: right;
         }
