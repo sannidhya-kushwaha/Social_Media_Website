@@ -34,6 +34,28 @@
             display: inline-block;
             margin: 2px;
         }
+
+        #friends_img{
+            width: 75px;
+            float: left;
+            margin: 8px;
+
+        }
+
+        #friends_bar{
+            background-color: white;
+            min-height: 400px;
+            margin-top: 20px;
+            color: #aaa;
+            padding: 8px;
+        }
+        #friends{
+            clear: both;
+            font-size: 12px;
+            font-weight: bold;
+            color: #405d9b;
+        }
+
     </style>
 </head>
 <body style="font-family: tahoma; background-color:#d0d8e4">
@@ -64,9 +86,51 @@
     <div id="menu_buttons">Settings</div>
 
 </div>
+
+        <!-- Below cover area -->
+
     <div style="display:flex;">
-        <div style="min-height:400px; flex:1;"></div>
-        <div style="min-height: 400px;flex:2.5;"></div>
+
+            <!-- Friends area -->
+        <div style="min-height:400px; flex:1;">
+            <div id="friends_bar">
+                Friends<br>
+
+                <div id="friends">
+                    <img id="friends_img" src="images/user1.jpg" alt="">
+                    <br>
+                    First User
+                </div>
+                <div id="friends">
+                    <img id="friends_img" src="images/user2.jpg" alt="">
+                    <br>
+                    Second User
+                </div>
+                <div id="friends">
+                    <img id="friends_img" src="images/user3.jpg" alt="">
+                    <br>
+                    Third User
+                </div>
+                <div id="friends">
+                    <img id="friends_img" src="images/user4.jpg" alt="">
+                    <br>
+                    Fourth User
+                </div>
+                
+                
+
+
+
+            </div>
+
+        </div>
+
+            <!-- Posts area -->
+        <div style="min-height: 400px;flex:2.5;">
+    
+        </div>
+
+
     </div>
 
 </div>
