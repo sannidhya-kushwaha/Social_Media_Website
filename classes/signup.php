@@ -28,14 +28,15 @@ class Signup{
     $gender = $data['gender'];
     $email = $data['email'];
     $password = $data['password'];
-    $url_address = strtolower($this->firstname) . "." . strtolower($this->lastname);
+    $url_address = strtolower($first_name) . "." . strtolower($last_name);
     $userid = $this->create_userid();
 
         $query = "insert into users
          (userid,first_name,last_name,gender,email,password,url_address)
           values
            ('$userid','$first_name','$last_name','$gender','$email','$password','$url_address')";
-        return $query;
+    
+
         $DB = new Database();
         $DB->save($query);
     }
