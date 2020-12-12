@@ -1,3 +1,16 @@
+<?php
+
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,22 +72,27 @@
     </div>
 
     <div id="bar2">
+
     Sign up to Mybook <br><br>
-    <input type="text" id="text" placeholder="First Name"><br><br>
-    <input type="text" id="text" placeholder="Last Name"><br><br>
+
+    <form method="POST" action="">
+    <input name="first_name" type="text" id="text" placeholder="First Name"><br><br>
+    <input name="last_name" type="text" id="text" placeholder="Last Name"><br><br>
     
     <span style="font-weight: normal">Gender:</span> <br>
-    <select name="Gender" id="text">
+    <select name="gender" id="text">
         <option value="Male"></option>
         <option value="Female"></option>
     </select>
     <br><br>
 
-    <input type="text" id="text" placeholder="Email"><br><br>
+    <input name="email" type="text" id="text" placeholder="Email"><br><br>
 
-    <input type="password" id="text" placeholder="Password"><br><br>
-    <input type="password" id="text" placeholder="Re-type Password"><br><br>
-    <input type="submit" id="button" value="Sign up"><br><br><br>
+    <input  name="password" type="password" id="text" placeholder="Password"><br><br>
+    <input  name="password2" type="password" id="text" placeholder="Re-type Password"><br><br>
+    <input type="submit" id="button" value="Sign up">
+    <br><br><br>
+    </form>
     </div>
 </body>
 </html>
