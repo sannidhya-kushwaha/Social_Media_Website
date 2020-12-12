@@ -1,21 +1,23 @@
 <?php
 
 class Signup{
+
     private $error = "";
 
    public function evaluate($data){
         foreach ($data as $key => $value) {
             if(empty($value)){
                 // $error .= $key . "is empty!<br>";
-                $error = $key . "is empty!<br>";
+                $this->error = $this->error . $key . "is empty!<br>";
+               
             }
         }
-        if($error == ""){
+        if($this->error == ""){
             //no error
             $this->create_user($data);
 
             }else{
-                return $error;
+                return $this->error;
         }
     }
 
@@ -26,14 +28,27 @@ class Signup{
     $gender = $data['gender'];
     $email = $data['email'];
     $password = $data['password'];
-    $url_address = $data['url_address'];
-    $userid = $data['userid'];
+    $url_address = strtolower($this->firstname) . "." . strtolower($this->lastname);
+    $userid = $this->create_userid();
 
         $query = "insert into users
          (userid,first_name,last_name,gender,email,password,url_address)
           values
            ('$userid','$first_name','$last_name','$gender','$email','$password','$url_address')";
+        return $query;
         $DB = new Database();
         $DB->save($query);
+    }
+   
+    private function create_userid(){
+        $length = rand(4,19);
+        $number = "";
+        
+        for ($i=0; $i < $length; $i++) { 
+            # code...
+            $new_rand = rand(0,9);
+            $number = $number . $new_rand;
+        }
+        return $number;
     }
 }
