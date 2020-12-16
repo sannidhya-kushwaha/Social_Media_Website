@@ -1,3 +1,37 @@
+<?php
+
+    include("classes/connect.php");
+    include("classes/login.php");
+
+    
+    $email = "";
+    $password = "";
+
+
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+    $login = new Login();
+    $result = $login->evaluate($_POST);
+
+    if($result != ""){
+
+        echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
+        echo "<br>The following errors occured:<br><br>";
+        echo $result;
+        echo "</div>";
+    }else{
+        header("Location: profile.php");
+        die;
+    }
+
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,8 +94,8 @@
 
     <div id="bar2">
     Log in to Mybook <br><br>
-    <input type="text" id="text" placeholder="Email"><br><br>
-    <input type="password" id="text" placeholder="Password"><br><br>
+    <input value="<?php echo $email ?>" type="text" id="text" placeholder="Email"><br><br>
+    <input value="<?php echo $password ?>"type="password" id="text" placeholder="Password"><br><br>
     <input type="submit" id="button" value="Log In"><br><br><br>
     </div>
 </body>
