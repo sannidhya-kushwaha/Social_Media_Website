@@ -6,11 +6,13 @@ class Signup{
 
    public function evaluate($data){
         foreach ($data as $key => $value) {
+
             if(empty($value)){
                 // $error .= $key . "is empty!<br>";
                 $this->error = $this->error . $key . "is empty!<br>";
                
             }
+           
         }
         if($this->error == ""){
             //no error
@@ -23,8 +25,8 @@ class Signup{
 
    public function create_user($data){
 
-    $first_name = $data['first_name'];
-    $last_name = $data['last_name'];
+    $first_name = ucfirst($data['first_name']);
+    $last_name = ucfirst($data['last_name']);
     $gender = $data['gender'];
     $email = $data['email'];
     $password = $data['password'];
