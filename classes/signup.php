@@ -31,11 +31,17 @@ class Signup{
     $url_address = strtolower($first_name) . "." . strtolower($last_name);
     $userid = $this->create_userid();
 
-        $query = "insert into users
-         (userid,first_name,last_name,gender,email,password,url_address)
-          values
-           ('$userid','$first_name','$last_name','$gender','$email','$password','$url_address')";
+        // $query = "insert into users
+        //  (userid,first_name,last_name,gender,email,password,url_address)
+        //   values
+        //    ('$userid','$first_name','$last_name','$gender','$email','$password','$url_address')";
+
+        //    $query="insert into accounts(userid,first_name,last_name,gender,email,password,url_address)
+        // VALUES('$userid','$first_name','$last_name','$gender','$email','$password','$url_address')";
+
+       $query =  "INSERT INTO `users` (`userid`, `first_name`, `last_name`, `gender`, `email`, `password`, `url_address`, `date`) VALUES ($userid, $first_name, $last_name, $gender, $email, $password, $url_address)";
     
+        echo $query;
 
         $DB = new Database();
         $DB->save($query);
