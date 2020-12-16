@@ -4,12 +4,7 @@ class Login{
 
     private $error = "";
 
-    function evaluate(){
-
-        
-    }
-
-    public function create_user($data){
+    public function evaluate($data){
 
         $email = addslashes($data['email']);
         $password = addslashes($data['password']);
@@ -24,7 +19,20 @@ class Login{
             $DB = new Database();
            $result = $DB->read($query);
 
-           
-        }
+           if($result){
+                $row = $result[0];
+                if($password == $row['password']){
+                    // Create session data
+                    $_SESSION['userid'] = $row['userod'];
+
+                }else{
+                    $error .= "Wrong password<br>";
+                }
+           }else{
+               $error .= "No such email was found<br>";
+           }
+               return $error;
+           }
+        
        
 }
