@@ -4,6 +4,33 @@
     // print_r($_SESSION);
     include("classes/connect.php");
     include("classes/login.php");
+    include("classes/user.php");
+
+    //check if user is logged in
+    if(isset($_SESSION['mybook_userid']) && is_numeric($_SESSION['mybook_userid']))
+    {
+        $id = $_SESSION['mybook_userid'];
+        $login = new Login();
+
+        $result = $login->check_login($id);
+
+        if($result){
+
+            // retrieve user data
+            $user = new User();
+
+            $user_data = $user->get_data($id);
+
+            if(!$user_data){
+                header("Location: login.php");
+                die;
+            }
+
+        }else{
+            header("Location: login.php");
+            die;
+        }
+    }
 
 ?>
 <!DOCTYPE html>
@@ -119,7 +146,7 @@
     <!-- <img id="profile_pic" src="images/selfie.jpg" alt=""> -->
     <img id="profile_pic" src="images/sannidhya.jpg" alt="">
     <br>
-    <div style="font-size: 20px;">Sannidhya Kushwaha</div>
+    <div style="font-size: 20px;"><?php echo $user_data['first_name'] . "" . $user_data['last_name'] ?></div>
     <br>
 
     <div id="menu_buttons">Timeline</div>
