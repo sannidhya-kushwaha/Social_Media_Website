@@ -12,10 +12,8 @@ class Login{
     
             // $query = "select * from users where email= '$email' limit 1";
             
-           $query =  "SELECT FROM `users` WHERE email= '$email' limit 1";
+           $query =  "SELECT * FROM `users` WHERE email= '$email' limit 1";
         
-            echo $query;
-    
             $DB = new Database();
            $result = $DB->read($query);
 
@@ -33,5 +31,19 @@ class Login{
            }
                return $this->error;
            }
-             
+           public function check_login($id){
+
+            $query =  "SELECT userid FROM `users` WHERE userid= '$id' limit 1";
+        
+                    $DB = new Database();
+                $result = $DB->read($query);
+
+                if($result){
+
+                        return true;
+
+                }return false;
+                    
+
+           }  
 }

@@ -1,7 +1,9 @@
 <?php
 
     session_start();
-    print_r($_SESSION);
+    // print_r($_SESSION);
+    include("classes/connect.php");
+    include("classes/login.php");
 
 ?>
 <!DOCTYPE html>
