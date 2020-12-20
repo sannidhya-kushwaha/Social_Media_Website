@@ -23,16 +23,15 @@ class Login{
                 $row = $result[0];
                 if($password == $row['password']){
                     // Create session data
-                    $_SESSION['userid'] = $row['userod'];
+                    $_SESSION['mybook_userid'] = $row['userid'];
 
                 }else{
-                    $error .= "Wrong password<br>";
+                    $this->error .= "Wrong password<br>";
                 }
            }else{
-               $error .= "No such email was found<br>";
+               $this->error .= "No such email was found<br>";
            }
-               return $error;
+               return $this->error;
            }
-        
-       
+             
 }

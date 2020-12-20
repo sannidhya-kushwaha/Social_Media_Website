@@ -93,10 +93,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     </div>
 
     <div id="bar2">
-    Log in to Mybook <br><br>
-    <input value="<?php echo $email ?>" type="text" id="text" placeholder="Email"><br><br>
-    <input value="<?php echo $password ?>"type="password" id="text" placeholder="Password"><br><br>
-    <input type="submit" id="button" value="Log In"><br><br><br>
+    <form method="post">
+        Log in to Mybook <br><br>
+        <input name="email" value="<?php echo $email ?>" type="text" id="text" placeholder="Email"><br><br>
+        <input name="password" value="<?php echo $password ?>"type="password" id="text" placeholder="Password"><br><br>
+        <input type="submit" id="button" value="Log In"><br><br><br>
+
+    </form>
     </div>
 </body>
 </html>
