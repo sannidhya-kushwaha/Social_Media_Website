@@ -1,37 +1,15 @@
 <?php
 
     session_start();
-    // print_r($_SESSION);
+
     include("classes/connect.php");
     include("classes/login.php");
     include("classes/user.php");
     include("classes/post.php");
 
-    //check if user is logged in
-    if(isset($_SESSION['mybook_userid']) && is_numeric($_SESSION['mybook_userid']))
-    {
-        $id = $_SESSION['mybook_userid'];
-        $login = new Login();
-
-        $result = $login->check_login($id);
-
-        if($result){
-
-            // retrieve user data
-            $user = new User();
-
-            $user_data = $user->get_data($id);
-
-            if(!$user_data){
-                header("Location: login.php");
-                die;
-            }
-
-        }else{
-            header("Location: login.php");
-            die;
-        }
-    }
+   
+    $login = new Login();
+    $user_data = $login->check_login($_SESSION['mybook_userid']);
 
     // posting starts here
 
@@ -56,7 +34,14 @@
         //collect posts
         $post = new Post();
         $id = $_SESSION['mybook_userid'];
-        $posts = $post->get_posts($id, $_POST);
+
+        $posts = $post->get_posts($id,);
+
+        //collect friends
+        $user = new User();
+        $id = $_SESSION['mybook_userid'];
+        
+        $friends = $user->get_friends($id);
 
 ?>
 <!DOCTYPE html>
@@ -154,19 +139,7 @@
 </head>
 <body style="font-family: tahoma; background-color:#d0d8e4">
 <br>
-    <!-- Top bar -->
-    <div id="blue_bar">
-        <div style="width: 800px; margin:auto;font-size:30px">
-        Mybook &nbsp; &nbsp;
-    <input type="text" id="search_box" placeholder="Search for people"> 
-    <!-- <img src="images/selfie.jpg" alt="" style="width: 50px;float: right;"> -->
-    <img src="images/sannidhya.jpg" alt="" style="width: 50px;float: right;">
-    <a href="logout.php">
-    <span style="font-size: 11px; float: right; margin:10px;color: white;">Logout</span>
-    </a>
-       
-    </div>
-        </div>
+    <?php include("header.php"); ?> 
 
 <!-- cover area -->
 <div style="width: 800px; margin: auto; min-height:400px;">
@@ -178,7 +151,7 @@
     <div style="font-size: 20px;"><?php echo $user_data['first_name'] . " " . $user_data['last_name'] ?></div>
     <br>
 
-    <div id="menu_buttons">Timeline</div>
+    <a href="index.php"><div id="menu_buttons">Timeline</div></a>
     <div id="menu_buttons">About</div>
     <div id="menu_buttons">Friends</div>
     <div id="menu_buttons">Photos</div>
@@ -195,27 +168,20 @@
             <div id="friends_bar">
                 Friends<br>
 
-                <div id="friends">
-                    <img id="friends_img" src="images/user1.jpg" alt="">
-                    <br>
-                    First User
-                </div>
-                <div id="friends">
-                    <img id="friends_img" src="images/user2.jpg" alt="">
-                    <br>
-                    Second User
-                </div>
-                <div id="friends">
-                    <img id="friends_img" src="images/user3.jpg" alt="">
-                    <br>
-                    Third User
-                </div>
-                <div id="friends">
-                    <img id="friends_img" src="images/user4.jpg" alt="">
-                    <br>
-                    Fourth User
-                </div>
-                
+                <?php
+
+                    if($friends){
+                        foreach ($friends as $FRIEND_ROW) {
+                            # code...
+
+
+                            include("user.php");
+                        }
+                    }
+               
+                    
+              ?>
+            
                 
             </div>
 
@@ -240,7 +206,7 @@
                     if($posts){
                         foreach ($posts as $ROW) {
                             # code...
-                            
+
                             $user = new User();
                             $ROW_USER = $user->get_user($ROW['userid']);
 

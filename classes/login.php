@@ -32,18 +32,31 @@ class Login{
                return $this->error;
            }
            public function check_login($id){
+            if( is_numeric($id))
+            {
 
-            $query =  "SELECT userid FROM `users` WHERE userid= '$id' limit 1";
-        
-                    $DB = new Database();
-                $result = $DB->read($query);
+                $query =  "SELECT * FROM `users` WHERE userid= '$id' limit 1";
+            
+                        $DB = new Database();
+                    $result = $DB->read($query);
 
-                if($result){
+                    if($result){
 
-                        return true;
+                        $user_data = $result[0];
+                            return $user_data;
 
-                }return false;
-                    
+                    }else{
+                        header("Location: login.php");
+                        die;
+                    }
+                    return false;
+                        
+                
+                
+        }else{
+            header("Location: login.php");
+            die;
+        }
 
            }  
 }

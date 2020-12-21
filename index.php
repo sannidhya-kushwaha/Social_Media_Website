@@ -1,3 +1,17 @@
+<?php
+
+session_start();
+
+    include("classes/connect.php");
+    include("classes/login.php");
+    include("classes/user.php");
+    include("classes/post.php");
+
+   
+    $login = new Login();
+    $user_data = $login->check_login($_SESSION['mybook_userid']);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -93,16 +107,7 @@
 </head>
 <body style="font-family: tahoma; background-color:#d0d8e4">
 <br>
-    <!-- Top bar -->
-    <div id="blue_bar">
-        <div style="width: 800px; margin:auto;font-size:30px">
-        Mybook &nbsp; &nbsp;
-    <input type="text" id="search_box" placeholder="Search for people"> 
-    <!-- <img src="images/selfie.jpg" alt="" style="width: 50px;float: right;"> -->
-    <img src="images/sannidhya.jpg" alt="" style="width: 50px;float: right;">
-       
-    </div>
-        </div>
+<?php include("header.php"); ?> 
 
 <!-- cover area -->
 <div style="width: 800px; margin: auto; min-height:400px;">
@@ -117,7 +122,9 @@
             <div id="friends_bar">
                 
             <img id="profile_pic" src="images/sannidhya.jpg" alt="">  <br> 
-                Sannidhya Kushwaha           
+               <a href="profile.php" style="text-decoration: none;">
+                   <?php echo $user_data['first_name'] . "<br>" . $user_data['last_name'] ?>
+               </a>           
             </div>
 
         </div>
