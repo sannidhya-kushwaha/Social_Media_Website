@@ -41,8 +41,22 @@
             $id = $_SESSION['mybook_userid'];
             $result = $post->create_post($id, $_POST);
 
+            if($result == ""){
+                header("Location: profile.php");
+                die;
+            }else{
+                echo "<div style='text-align:center;font-size:12px;color:white;background-color:grey;'>";
+                echo "<br>The following errors occured:<br><br>";
+                echo $result;
+                echo "</div>";
+            }
+
         }
 
+        //collect posts
+        $post = new Post();
+        $id = $_SESSION['mybook_userid'];
+        $posts = $post->get_posts($id, $_POST);
 
 ?>
 <!DOCTYPE html>
@@ -221,32 +235,18 @@
          <!-- Posts -->
             <div id="post_bar">
 
-              <!-- Post 1 -->
-                <div id="post">
-                    <div> 
-                        <img src="images/user1.jpg" alt="" style="width: 75px;margin-right: 4px;">
-                    </div>
-                    <div>
-                        <div style="font-weight: bold; color:#405d9b;" >First Guy</div>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolor, illo possimus ab repellendus aspernatur qui tempore atque harum obcaecati quos accusamus et dolores dolorum nesciunt ea natus cum. Blanditiis corporis dolore nulla et.
-                        <br><br>
-                        <a href="">Like</a> . <a href="">Comment</a> . <span style="color: #999;">April 23 2020</span>
-                    </div>
-                </div>
-              <!-- Post 2 -->
-                <div id="post">
-                    <div> 
-                        <img src="images/user4.jpg" alt="" style="width: 75px;margin-right: 4px;">
-                    </div>
-                    <div>
-                        <div style="font-weight: bold; color:#405d9b;" >African Guy</div>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolor, illo possimus ab repellendus aspernatur qui tempore atque harum obcaecati quos accusamus et dolores dolorum nesciunt ea natus cum. Blanditiis corporis dolore nulla et.
-                        <br><br>
-                        <a href="">Like</a> . <a href="">Comment</a> . <span style="color: #999;">April 23 2020</span>
-                    </div>
-                </div>
+              <?php
 
-
+                    if($posts){
+                        foreach ($posts as $row) {
+                            # code...
+                            include("post.php");
+                        }
+                    }
+               
+                    
+              ?>
+           
 
 
             </div>
