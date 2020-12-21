@@ -238,8 +238,12 @@
               <?php
 
                     if($posts){
-                        foreach ($posts as $row) {
+                        foreach ($posts as $ROW) {
                             # code...
+                            
+                            $user = new User();
+                            $ROW_USER = $user->get_user($ROW['userid']);
+
                             include("post.php");
                         }
                     }
