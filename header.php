@@ -5,7 +5,9 @@
          &nbsp; &nbsp;
     <input type="text" id="search_box" placeholder="Search for people"> 
     <!-- <img src="images/selfie.jpg" alt="" style="width: 50px;float: right;"> -->
+    <a href="profile.php">
     <img src="images/sannidhya.jpg" alt="" style="width: 50px;float: right;">
+    </a>
     <a href="logout.php">
     <span style="font-size: 11px; float: right; margin:10px;color: white;">Logout</span>
     </a>
