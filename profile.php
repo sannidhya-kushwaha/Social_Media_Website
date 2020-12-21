@@ -5,6 +5,7 @@
     include("classes/connect.php");
     include("classes/login.php");
     include("classes/user.php");
+    include("classes/post.php");
 
     //check if user is logged in
     if(isset($_SESSION['mybook_userid']) && is_numeric($_SESSION['mybook_userid']))
@@ -35,7 +36,11 @@
     // posting starts here
 
         if($_SERVER['REQUEST_METHOD'] == "POST"){
-            
+
+            $post = new Post();
+            $id = $_SESSION['mybook_userid'];
+            $result = $post->create_post($id, $_POST);
+
         }
 
 
